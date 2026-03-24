@@ -1,7 +1,1 @@
-# Security Policy
-
-## Reporting Vulnerabilities
-If you discover a vulnerability in this project, we ask that you report it privately to the maintainers. Please do not open a public issue.
-
-## Supported Versions
-Please see our GitHub repository for the list of supported versions.
+# Security Policy\n\n## Reporting Security Issues\nIf you discover a security vulnerability, please email [msdperera99@gmail.com](mailto:msdperera99@gmail.com).\n\n## Public Issues\nPlease do not open public issues for security vulnerabilities.\n\n## Service Level Agreement\nWe aim to respond to security issues within 72 hours.
