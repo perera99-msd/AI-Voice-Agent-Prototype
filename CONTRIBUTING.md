@@ -1,21 +1,32 @@
-# Contributing Guidelines
+# Contributing to the AI Voice Agent Prototype
 
-Thank you for considering contributing to our project! Here are some guidelines to help you get started:
+Thank you for considering contributing to the AI Voice Agent Prototype! Please follow this structured guide to ensure a smooth collaboration.
 
-## Contributions Welcome
-We welcome contributions to our project! If you have a significant change in mind, please open an issue to discuss it first. For small fixes, you can go straight to creating a Pull Request (PR).
+## Scope
+- Describe the scope of contributions, such as new features, enhancements, and bug fixes.
 
-## Branch Naming
-When making changes, please use the following branch naming convention: `dev-yourname`.
+## Workflow
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature-x`.
+3. Make changes and test thoroughly.
 
-## Basic Steps
-1. **Fork** the repository.
-2. **Create a new branch** for your work.
-3. **Commit** your changes.
-4. **Open a PR** to submit your changes for review.
+## Branching
+- Branch naming conventions: `feature/xyz`, `bugfix/xyz`, etc.
 
-## Running Tests
-If tests are available, please run `npm test` to ensure everything is working correctly. Additionally, run `npm run lint` if it exists to check for code quality.
+## Commit Messages
+- Follow the format: `Type: Subject` (e.g., `Feature: Add new functionality`).
 
-## Be Respectful
-Remember to be respectful in all interactions with others in this community!
+## Code Style
+- Follow the coding standards outlined in our style guide.
+
+## Tests
+- Ensure that your contributions are tested and include relevant test cases.
+
+## Pull Request Checklist
+- [ ] Code is well-documented.
+- [ ] Tests have been added.
+- [ ] Changes have been tested locally.
+
+## Links
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
+- [Security Policy](./SECURITY.md)
