@@ -24,8 +24,8 @@ jobs:
 
       - name: Basic syntax checks
         run: |
-          node -c index.js
-          node -c makeCall.js
+          node --check index.js
+          node --check makeCall.js
 
       - name: Tests (current repo has placeholder test script)
         run: npm test
