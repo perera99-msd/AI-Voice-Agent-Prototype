@@ -27,5 +27,5 @@ jobs:
           node --check index.js
           node --check makeCall.js
 
-      - name: Tests (current repo has placeholder test script)
-        run: npm test
+      - name: Tests (currently disabled; placeholder test script in package.json)
+        run: echo "Skipping tests: npm test is a placeholder that exits 1. Enable this step when real tests are added."
