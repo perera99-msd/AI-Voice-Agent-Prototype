@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  node-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Basic syntax checks
+        run: |
+          node --check index.js
+          node --check makeCall.js
+
+      - name: Tests (currently disabled; placeholder test script in package.json)
+        run: echo "Skipping tests: npm test is a placeholder that exits 1. Enable this step when real tests are added."
