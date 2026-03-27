@@ -19,14 +19,16 @@ This repository is an early-stage prototype of an **AI Voice Agent** that can pl
 ## 🧱 Tech Stack
 - 🟢 **Node.js**
 - 📦 **npm**
-- ☁️ **Twilio** (typical telephony provider)
+- ☁️ **Twilio** (telephony)
 - 🤖 **LLM Provider** (OpenAI / Anthropic / etc.)
+
+---
 
 ## 🚀 Getting Started
 
 ### 1) Prerequisites
 - Node.js **18+**
-- A telephony provider account (e.g., Twilio)
+- A Twilio account (or another telephony provider)
 
 ### 2) Install
 ```bash
@@ -38,16 +40,63 @@ Create a `.env` file using the example:
 ```bash
 cp .env.example .env
 ```
-Then fill in required keys.
 
-### 4) Run
+#### Environment variables
+These are the key variables used by this prototype:
+
+- `OPENAI_API_KEY` — OpenAI API key used for the Realtime WebSocket connection.
+- `TWILIO_ACCOUNT_SID` — Your Twilio Account SID.
+- `TWILIO_AUTH_TOKEN` — Your Twilio Auth Token.
+- `TWILIO_PHONE_NUMBER` — A Twilio phone number in E.164 format (example: `+15005550006` for Twilio test).
+- `MY_PHONE_NUMBER` — Your destination phone number (E.164 format).
+- `PORT` — (Optional) Port for the local server (defaults to `3000`).
+
+> Note: Never commit your real `.env` file. Use `.env.example` as the template.
+
+### 4) Run the server
 ```bash
 node index.js
 ```
 
+By default the server starts on:
+- `http://localhost:3000`
+
+### 5) Expose your local server (recommended for Twilio webhooks)
+If you’re running locally, Twilio needs a public URL to reach your webhook endpoints.
+A common approach is to use **ngrok** (or a similar tunneling tool), then configure Twilio to call:
+
+- `POST https://<your-public-host>/incoming-call`
+
+---
+
+## 📞 Twilio Webhook / Call Flow (high-level)
+
+- Twilio hits `POST /incoming-call`
+- The server responds with TwiML that tells Twilio to start a `<Stream>` to:
+  - `wss://<your-host>/media-stream`
+- Twilio streams audio to your server via WebSocket
+- Your server forwards audio to the OpenAI Realtime API
+- The OpenAI Realtime API returns audio deltas that are forwarded back to Twilio
+
+---
+
+## ☎️ Outbound call script (prototype)
+
+There is a small script that demonstrates initiating a call request:
+
+```bash
+node makeCall.js
+```
+
+**Important:**
+- `makeCall.js` currently contains **hard-coded** example values (like the webhook URL and phone numbers).
+- If you plan to use it beyond a quick test, update it to read `to`, `from`, and `url` from environment variables.
+
+---
+
 ## 📂 Project Structure
-- `index.js` — main entry point
-- `makeCall.js` — call initiation logic
+- `index.js` — main entry point (Express + WebSockets)
+- `makeCall.js` — call initiation logic (prototype)
 - `.env.example` — environment template
 
 ## 🛡️ Security (no emojis by request)
